@@ -233,4 +233,4 @@ clang++ *.o -o main
 
  * Different GCC vs CLANG warning: `-Wconversion` and `-Wsign-conversion` can capture compresion of data type (example from `int64_t` to `int32_t`) in one *compiler* that are usually passed by other compiler. Running both warning can give more layer of safety.
 
-> Notes for total beginner: You might not know all the syntax we write before which is FINE, ignore it for now, don't be too curious or you will be off the trail and procastinate, we will come back to that later in detail, for now just do what i tell u and finish the lesson.
+> Notes for total beginner: You might not know all the syntax before which is FINE, ignore it for now, don't be too curious or you will be off the trail and procastinate, we will come back to that later in detail, for now just finish the lesson.
