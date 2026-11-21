@@ -156,7 +156,7 @@ cmake --build build-clang && ./build-clang/lesson02
 
 * **Comparison in C++17, 20 and 23**: Basic data types (`bool`, `char`, `int`, `double`, `<cstdint>`) and `std::vector` is consistence in all the three, but `std::span` (c++20) and `std::mdspan` (c++23) syntax don't exist in c++17.
 
-* **Becareful with integer overflow**: If `int` 32-bit accept a value beyond it's maximum it will result in signed integer overflow which is **undefined behaviour** for bigger integer use 64 type such as `std::int64_t` or `std::uint64_t`.
+* **Becareful with integer overflow**: If `int` 32-bit accept a value beyond it's maximum it will result in signed integer overflow which is **undefined behaviour**, for bigger integer use 64 type such as `std::int64_t` or `std::uint64_t`.
 
 ## `sizeof(...)`
 
