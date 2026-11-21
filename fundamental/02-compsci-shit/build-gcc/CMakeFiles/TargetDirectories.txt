@@ -1,0 +1,3 @@
+/home/berd/project/cpp-gemini/fundamental/lesson-02-compsci-shit/build-gcc/CMakeFiles/lesson02.dir
+/home/berd/project/cpp-gemini/fundamental/lesson-02-compsci-shit/build-gcc/CMakeFiles/edit_cache.dir
+/home/berd/project/cpp-gemini/fundamental/lesson-02-compsci-shit/build-gcc/CMakeFiles/rebuild_cache.dir

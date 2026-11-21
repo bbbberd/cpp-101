@@ -1,0 +1,3 @@
+/home/berd/project/cpp-gemini/fundamental/lesson-01-intro/build-gcc/CMakeFiles/anatomy_cpp.dir
+/home/berd/project/cpp-gemini/fundamental/lesson-01-intro/build-gcc/CMakeFiles/edit_cache.dir
+/home/berd/project/cpp-gemini/fundamental/lesson-01-intro/build-gcc/CMakeFiles/rebuild_cache.dir

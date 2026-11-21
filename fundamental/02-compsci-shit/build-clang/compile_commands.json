@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/berd/project/cpp-gemini/fundamental/lesson-02-compsci-shit/build-clang",
+  "command": "/usr/bin/clang++ -g -std=c++20 -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -o CMakeFiles/lesson02.dir/src/main.cpp.o -c /home/berd/project/cpp-gemini/fundamental/lesson-02-compsci-shit/src/main.cpp",
+  "file": "/home/berd/project/cpp-gemini/fundamental/lesson-02-compsci-shit/src/main.cpp",
+  "output": "CMakeFiles/lesson02.dir/src/main.cpp.o"
+}
+]

@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/berd/project/cpp-gemini/fundamental/lesson-01-intro/build-clang",
+  "command": "/usr/bin/clang++ -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -o CMakeFiles/anatomy_cpp.dir/src/main.cpp.o -c /home/berd/project/cpp-gemini/fundamental/lesson-01-intro/src/main.cpp",
+  "file": "/home/berd/project/cpp-gemini/fundamental/lesson-01-intro/src/main.cpp",
+  "output": "CMakeFiles/anatomy_cpp.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/berd/project/cpp-gemini/fundamental/lesson-01-intro/build-clang",
+  "command": "/usr/bin/clang++ -O3 -DNDEBUG -std=gnu++20 -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wsign-conversion -o CMakeFiles/anatomy_cpp.dir/src/compute.cpp.o -c /home/berd/project/cpp-gemini/fundamental/lesson-01-intro/src/compute.cpp",
+  "file": "/home/berd/project/cpp-gemini/fundamental/lesson-01-intro/src/compute.cpp",
+  "output": "CMakeFiles/anatomy_cpp.dir/src/compute.cpp.o"
+}
+]

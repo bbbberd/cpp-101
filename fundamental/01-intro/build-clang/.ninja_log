@@ -1,0 +1,4 @@
+# ninja log v6
+1	25	1795244769648531087	CMakeFiles/anatomy_cpp.dir/src/compute.cpp.o	52ae1a7bc013dbdd
+0	404	1795244769644373822	CMakeFiles/anatomy_cpp.dir/src/main.cpp.o	fa03b7539b108725
+404	548	1795244770051701108	anatomy_cpp	12a32e969a678725
