@@ -45,7 +45,7 @@ Newbies tend to think that `g++ main.cpp` is the way but in cpp production that 
        │              │
        ▼              ▼
 ┌────────────────────────────┐
-│ 2. COMPILER (cc1plus/clang)│ ──► Parsing AST, Optimasi IR, Codegen
+│ 2. COMPILER (cc1plus/clang)│ ──► Parsing AST, IR Optimization, Codegen
 └────────────────────────────┘     Output: Assembly (.s)
        │              │
        ▼              ▼
@@ -56,8 +56,8 @@ Newbies tend to think that `g++ main.cpp` is the way but in cpp production that 
        └──────┬───────┘
               ▼
 ┌────────────────────────────┐
-│ 4. LINKER (ld / lld)       │ ──► Resolusi simbol, gabung section,
-└────────────────────────────┘     relokasi alamat memori
+│ 4. LINKER (ld / lld)       │ ──► Symbol resolution, section combination,
+└────────────────────────────┘     memoy address relocation
               │
               ▼
       [ app_binary ]                 (Executable ELF di Linux)
@@ -66,26 +66,27 @@ Newbies tend to think that `g++ main.cpp` is the way but in cpp production that 
 Explanation:
 
 **1. Preprocessing (`-E`)**:
-* Prepocessor don't understand C++ syntax; she is purely manipulating text.
-* Every `#include <vector>` will copy and paste all content of the header file into your `main.cpp`.
-* All combination of `.cpp` with the `#include` is called ***Translation Unit (TU)***.
+* Prepocessor don't understand C++ syntax, she is purely manipulating text.
+* Every `#include` will be copied and pasted of all content from the header file into your `main.cpp`.
+* All combination of `.cpp` and `#include` is called ***Translation Unit (TU)***.
 * *Performance Implication*: More header that are included, means more big of the TU that are parsed by the compiler every time there is something being changed.
 
 **2. Compilation (`-S`)**:
 
 * Compiler take one TU (without knowing other `.cpp` file).
-* Building ***AST (Abstract Syntax Tree)***, turn it into ***IR (Intermediate Representation)*** like *GIMPLE* in GCC or *LLVM IR* in CLANG then run the **optimization passes* (like *inlining*, *loop unrolling*, *dead code elimination*).
-* The output will be Assembly instruction script (`.s`) spesific to the target machine architecture of the CPU (for example `x86_64`).
+* Building ***AST (Abstract Syntax Tree)***, turn it into ***IR (Intermediate Representation)*** like *GIMPLE* in GCC or *LLVM IR* in CLANG then process the *optimization passes* (like *inlining*, *loop unrolling*, *dead code elimination*).
+* The output will be Assembly instruction script (`.s`) spesific to the target machine architecture of the CPU (for example of mine is `x86_64`).
 
 **3. Assembly (`-c`)**:
 
-* Translating assembly instruction above into *machine code binary* as ***Object File***(`.o`) format
-* The `.o` file using the ***ELF (Executable and Linkable Format)***. Inside there is a function symbol that are defined (defined symbol) and external function where the address are not yet known (undefined symbols).
+* Translating assembly instruction above into *machine code binary* as ***Object File***(`.o`) format.
+* The `.o` is recipe for the ***ELF (Executable and Linkable Format)***. Inside there is a function symbol that are defined (defined symbol) and external function where the address are not yet known (undefined symbols).
 
 **4. Linking**:
-* Linker collecting all the file `.o` and external library (`.a` for *static library*, `.so` for *shared library*)
-* The whole job of linker is for **symbol Resolution** (matching the function with the definition) and **Relocation** (to set the final virtual address for the binary).
+* Linker collecting all the file `.o` and external library (`.a` for *static library* in linux and `.lib` for Windows, `.so` for *shared library* in Linux, or `.dll` in Windows)
+* The whole job of linker is for **Symbol Resolution** (matching the function with the definition) and **Relocation** (to set the final virtual address for the binary).
 * If the function is declared in `.hpp` header, compiler will pass the part 2, ***but*** if it's forgot to be linked with the implementation, ***linker*** will give classic error warning `undefined reference to ..`
+* The end product is ELF file in Linux, or EXE file in Windows.
 
 ## Project Structure and CMake
 
@@ -227,9 +228,9 @@ clang++ *.o -o main
 * Why `CMAKE_CXX_EXTENSIONS OFF` by default? Cmake using `-std:gnu++20` wich allowed special GNU/CLANG extension (such as *variable-length arrays* in stack). Turning it off is important so the `-std=c++20` is portable in all platform (including MSVC Windows).
 
 * `[[nodiscard]]` and `noexcept`:
- * `[[nodiscard]]` (C++17) tell the compiler to give warning if the caller ignore the return value (preventing silent bug logic) 
- * `noexpect` tell the compiler that the function will not throw an exception. In *low-latency* `noexcept` make compiler erase *stack unwinding* table tp produce more compact machine code.
+    * `[[nodiscard]]` (C++17) tell the compiler to give warning if the caller ignore the return value (preventing silent bug logic) 
+    * `noexpect` tell the compiler that the function will not throw an exception. In *low-latency* `noexcept` make compiler erase *stack unwinding* table tp produce more compact machine code.
 
  * Different GCC vs CLANG warning: `-Wconversion` and `-Wsign-conversion` can capture compresion of data type (example from `int64_t` to `int32_t`) in one *compiler* that are usually passed by other compiler. Running both build can give more layer of safety.
 
-> Notes for total beginner: You might not know the syntax above which is FINE, ignore it for now, don't be too curious or you will be off the trail and procastinate, we will come back to that later in detail, for now just do what i tell u.
+> Notes for total beginner: You might not know all the syntax we write before which is FINE, ignore it for now, don't be too curious or you will be off the trail and procastinate, we will come back to that later in detail, for now just do what i tell u and finish the lesson.
