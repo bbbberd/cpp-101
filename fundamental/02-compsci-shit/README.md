@@ -152,7 +152,7 @@ cmake --build build-clang && ./build-clang/lesson02
 
 ## Industry Notes
 
-* Why `std::vector` and not `new/delete`? because it follows RAII principle to reduce risk of *memory leak* and *double free*. Also it's optimized well, even compare to standard array in some circumtances so industry uses it alot and it shows that you are responsible.
+* **Why `std::vector` and not `new/delete`?** because it follows RAII principle to reduce risk of *memory leak* and *double free*. Also it's optimized well, even compare to standard array in some circumtances so industry uses it alot and it shows that you are responsible.
 
 * **Comparison in C++17, 20 and 23**: Basic data types (`bool`, `char`, `int`, `double`, `<cstdint>`) and `std::vector` is consistence in all the three, but `std::span` (c++20) and `std::mdspan` (c++23) syntax don't exist in c++17.
 
