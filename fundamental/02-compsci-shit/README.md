@@ -138,6 +138,18 @@ target_compile_options(lesson02 PRIVATE
 )
 ```
 
+Build the program:
+
+```bash
+# GNU
+cmake -B build-gcc -G Ninja -DCMAKE_CXX_COMPILER=g++ -DCMAKE_BUILD_TYPE=Debug
+cmake --build build-gcc && ./build-gcc/lesson02
+
+#CLANG
+cmake -B build-clang -G Ninja -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_EXE_LINKER_FLAGS="-fuse-ld=lld" -DCMAKE_BUILD_TYPE=Debug
+cmake --build build-clang && ./build-clang/lesson02
+```
+
 ## Industry Notes
 
 * Why `std::vector` and not `new/delete`? because it follows RAII principle to reduce risk of *memory leak* and *double free*. Also it's optimized well, even compare to standard array in some circumtances so industry uses it alot and it shows that you are responsible.
